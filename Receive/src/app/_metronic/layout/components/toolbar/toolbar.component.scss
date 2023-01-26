@@ -1,0 +1,43 @@
+.bullet {
+  background-color: #06D734;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: 10px;
+}
+
+.connect {
+  background-color: #000;
+  border-radius: 6px;
+  height: 20px;
+  width: 110px;
+  margin-left: -130px;
+}
+
+.status {
+  margin-left: -90px;
+}
+
+.modal-name-bullet:before {
+  content: '•';
+  font-size: 40px;
+  margin-right: 8px;
+}
+.online-bullet:before {
+  color: green;
+}
+.offline-bullet:before {
+  color: gray;
+}
+.dndshort-bullet:before {
+  color: orange;
+}
+.dndlong-bullet:before {
+  color: orange;
+}
+.dndlast-bullet:before {
+  color: orange;
+}
+.show {
+  display: block;
+}

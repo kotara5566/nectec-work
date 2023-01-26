@@ -1,0 +1,479 @@
+<div
+  type="button"
+  id="callingtab"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Incoming
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div
+        class="d-flex flex-row"
+        style="
+          width: 380px;
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          margin: 0;
+          margin-bottom: 50px;
+          margin-right: 30px;
+          background-color: #1e1e2d;
+          border-radius: 12px;
+          height: 110px;
+        "
+      >
+        <div class="d-flex flex-row-auto w-80px flex-center">
+          <button
+            [inlineSVG]="'./assets/img/iconnumber/answer.svg'"
+            type="button"
+            class="btn-ans d-flex flex-column-fluid bg-success flex-center"
+          ></button>
+        </div>
+        <!--  -->
+        <div class="d-flex flex-column flex-row-auto" style="width: 220px">
+          <div class="d-flex flex-column-auto h-50px">
+            <span
+              [inlineSVG]="'./assets/img/iconnumber/incoming-call.svg'"
+              class="svg-icon incoming-icon svg-icon-2"
+            >
+            </span>
+            <div class="fs-8" style="margin-top: 18px; margin-left: 8px">
+              Mobile
+              <div style="margin-top: -4px">Making</div>
+            </div>
+            <div class="ans-status fs-7"></div>
+          </div>
+          <div class="d-flex flex-column-fluid">
+            <div class="fs-4 incoming-name">
+              ยศพัฒน์ พิกุลเทพ
+              <div class="fs-7">097-777-7777</div>
+            </div>
+
+            <span
+              type="button"
+              [inlineSVG]="'./assets/img/iconnumber/transfer.svg'"
+              class="btn-transfer icon-transfer svg-icon svg-icon-2x flex-center"
+            >
+            </span>
+          </div>
+        </div>
+        <!--  -->
+        <div class="d-flex flex-row-auto w-80px flex-center">
+          <button
+            type="button"
+            class="btn-hangup d-flex flex-column-fluid bg-danger flex-center"
+            [inlineSVG]="'./assets/img/iconnumber/hangup.svg'"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- answer -->
+<div
+  type="button"
+  id="callingtab"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#ans"
+>
+  Ans
+</div>
+
+<div
+  class="modal fade"
+  id="ans"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="">
+        <div
+          class="d-flex flex-row"
+          style="
+            width: 380px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            margin-bottom: 50px;
+            margin-right: 30px;
+            background-color: #1e1e2d;
+            border-radius: 12px;
+            height: 110px;
+          "
+        >
+          <div class="d-flex flex-column flex-row-auto w-300px">
+            <div class="d-flex flex-column-auto h-50px">
+              <span
+                [inlineSVG]="'./assets/img/iconnumber/ans.svg'"
+                class="svg-icon ans-icon svg-icon-2"
+              >
+              </span>
+              <div class="fs-8" style="margin-top: 18px; margin-left: 8px">
+                Mobile
+                <div style="margin-top: -4px">Making</div>
+              </div>
+            </div>
+            <div class="d-flex flex-column-fluid">
+              <div class="ans-timer fs-3">00 : 00</div>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/mic.svg'"
+                class="svg-icon transfer-icon svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/speaker.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/hold.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/numpad.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+            </div>
+          </div>
+          <div class="d-flex flex-row-auto w-80px flex-center">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn-hangup d-flex flex-column-fluid bg-danger flex-center"
+              [inlineSVG]="'./assets/img/iconnumber/hangup.svg'"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- hangup -->
+
+<div
+  type="button"
+  id="callingtab"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#hangup"
+>
+  Hangup
+</div>
+
+<div
+  class="modal fade"
+  id="hangup"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="">
+        <div
+          class="d-flex flex-row"
+          style="
+            width: 380px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            margin-bottom: 50px;
+            margin-right: 30px;
+            background-color: #a1a1a1;
+
+            border-radius: 12px;
+            height: 110px;
+          "
+        >
+          <div class="d-flex flex-column flex-row-auto w-300px">
+            <div class="d-flex flex-column-auto h-50px">
+              <span
+                [inlineSVG]="'./assets/img/iconnumber/hangup-icon.svg'"
+                class="svg-icon ans-icon svg-icon-2"
+              >
+              </span>
+              <div class="fs-8" style="margin-top: 18px; margin-left: 8px">
+                Mobile
+                <div style="margin-top: -4px">Making</div>
+              </div>
+            </div>
+            <div class="d-flex flex-column-fluid">
+              <div class="ans-timer fs-3">05 : 01</div>
+            </div>
+          </div>
+          <div class="d-flex flex-row-auto w-80px flex-center">
+            <button type="button" data-bs-dismiss="modal" class="btn">
+              <span
+                [inlineSVG]="'./assets/img/iconnumber/close.svg'"
+                class="icon-close svg-icon-2x"
+              >
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- callout -->
+
+<div
+  type="button"
+  id="callingtab"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#callout"
+>
+  callout
+</div>
+
+<div
+  class="modal fade"
+  id="callout"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="">
+        <div
+          class="d-flex flex-row"
+          style="
+            width: 380px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            margin-bottom: 50px;
+            margin-right: 30px;
+            background-color: #1e1e2d;
+            border-radius: 12px;
+            height: 110px;
+          "
+        >
+          <div class="d-flex flex-column flex-row-auto w-300px">
+            <div class="d-flex flex-column-auto h-50px">
+              <span
+                [inlineSVG]="'./assets/img/iconnumber/callout-icon.svg'"
+                class="svg-icon ans-icon svg-icon-3"
+              >
+              </span>
+              <div class="ans-type fs-8">โทรออก</div>
+            </div>
+            <div class="d-flex flex-column-fluid">
+              <div class="ans-timer fs-4">097-777-7777</div>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/mic.svg'"
+                class="svg-icon transfer-icon svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/speaker.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/add.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+            </div>
+          </div>
+          <div class="d-flex flex-row-auto w-80px flex-center">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn-hangup d-flex flex-column-fluid bg-danger flex-center"
+              [inlineSVG]="'./assets/img/iconnumber/hangup.svg'"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- transfer -->
+
+<div
+  type="button"
+  id="callingtab"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#transfer"
+>
+  transfer
+</div>
+
+<div
+  class="modal fade"
+  id="transfer"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="">
+        <div
+          class="d-flex flex-row"
+          style="
+            width: 380px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            margin-bottom: 50px;
+            margin-right: 30px;
+            background-color: #1e1e2d;
+            border-radius: 12px;
+            height: 110px;
+          "
+        >
+          <div class="d-flex flex-column flex-row-auto w-300px">
+            <div class="d-flex flex-column-auto h-50px">
+              <span
+                [inlineSVG]="'./assets/img/iconnumber/callout-icon.svg'"
+                class="svg-icon ans-icon svg-icon-3"
+              >
+              </span>
+              <div class="fs-8" style="margin-top: 18px; margin-left: 8px">
+                Mobile
+                <div style="margin-top: -4px">Making</div>
+              </div>
+            </div>
+            <div class="d-flex flex-column-fluid">
+              <div class="ans-timer fs-4">097-777-7777</div>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/mic.svg'"
+                class="svg-icon transfer-icon svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/speaker.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+              <span
+                type="button"
+                [inlineSVG]="'./assets/img/iconnumber/add.svg'"
+                class="svg-icon ans-icon-mic svg-icon-1"
+              >
+              </span>
+            </div>
+          </div>
+          <div class="d-flex flex-row-auto w-80px flex-center">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn-hangup d-flex flex-column-fluid bg-danger flex-center"
+              [inlineSVG]="'./assets/img/iconnumber/hangup.svg'"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="counter" [ngClass]="{ blink: !running }">
+  <span>{{ minutes }}:</span><span>{{ seconds }}:</span>
+  <span>{{ milliseconds }}</span>
+</div>
+<div *ngIf="!counter">
+  <span>{{ minutes }}:</span><span>{{ seconds }}:</span>
+  <span>{{ milliseconds }}</span>
+</div>
+<button class="timer-button" (click)="startTimer()">
+  {{ startText }}
+</button>
+<button
+  [disabled]="!counter"
+  [ngClass]="{ disabled: !counter }"
+  class="timer-button"
+  (click)="lapTimeSplit()"
+>
+  Lap
+</button>
+<button class="timer-button" (click)="clearTimer()">Clear</button>
+ -->
+
+<!-- Modal-conference -->
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content modal-conference">
+      <div class="modal-header ">
+        <div>
+          hhhh
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="grid-container">
+          <div class="create-room grid-item"></div>
+
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <span
+        type="button"
+        [inlineSVG]="'./assets/img/iconnumber/mic.svg'"
+        class="svg-icon transfer-icon svg-icon-1"
+      >
+      </span>
+      <span
+        type="button"
+        [inlineSVG]="'./assets/img/iconnumber/speaker.svg'"
+        class="svg-icon ans-icon-mic svg-icon-1"
+      >
+      </span>
+      <span
+        type="button"
+        [inlineSVG]="'./assets/img/iconnumber/add.svg'"
+        class="svg-icon ans-icon-mic svg-icon-1"
+      >
+      </span>
+      </div>
+    </div>
+  </div>
+</div>

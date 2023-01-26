@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      textarea {
+        width: 50%;
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body onload="init()">
+    <iframe
+      src="http://localhost:4200"
+      style="position: absolute; width: 0; height: 0; border: 0"
+    ></iframe>
+    <h5 style="font-size: 50px">Web Agent</h5>
+    <!-- <textarea id="chat-text"></textarea><br /> -->
+    <!-- <input type="text" id="messageChat" t />
+    <button onclick="sendMessage()">Send Message</button> -->
+    <button onclick="incoming()">incoming</button>
+    <button onclick="incoming2()">incoming2</button>
+    <button onclick="answer1()">answer_incoming_person_1</button>
+    <button onclick="answer2()">answer_incoming_person_2</button>
+    <!--  <button onclick="answer3()">answer_callout_person_1</button>
+    <button onclick="answer4()">answer_callout_person_2</button> -->
+    <button onclick="transfercomplete()">answer_transfer</button>
+    <button onclick="hangup1()">hangup</button>
+    <button onclick="hangup2()">hangup2</button>
+    <!-- <button onclick="joinconference()">joinconference</button> -->
+    <button onclick="hangupconference1()">hangupconference</button>
+    <script>
+      const callList = {};
+      const callListArray = [];
+      var operationStatus = "online";
+      function init() {
+        console.log("wait...");
+        var data = "";
+        // window.addEventListener("message", msg => {console.log("parent", msg)})
+
+        window.addEventListener("message", function (msg) {
+          console.log(msg);
+          if (msg.data.action == "chat") {
+            document.getElementById("chat-text").value +=
+              msg.data.message + "\n";
+            document.getElementById("chat-text").value +=
+              JSON.stringify(msg.data) + "\n";
+          } else if (msg.data.action === "answer") {
+            callList[msg.data.answer_number] = msg.data;
+            answer(msg.data);
+          } else if (msg.data.action === "hangup") {
+            delete callList[msg.data.hangup_number];
+            hangup(msg.data);
+          } else if (msg.data.action === "transfercomplete") {
+            delete callList[msg.data.transfercomplete_number];
+            transfercomplete(msg.data);
+          } else if (msg.data.action === "callout") {
+            callout(msg.data);
+          } else if (msg.data.action === "transfer") {
+            transfer(msg.data);
+          } else if (msg.data.action === "online") {
+            online();
+          } else if (msg.data.action === "offline") {
+            offline();
+          } else if (msg.data.action === "createconference") {
+            createconference();
+          } else if (msg.data.action === "createcomplete") {
+            createcomplete();
+          } else if (msg.data.action === "dndshort") {
+            dndshort();
+          } else if (msg.data.action === "dndlong") {
+            dndlong();
+          } else if (msg.data.action === "dndlast") {
+            dndlast();
+          } else if (msg.data.action === "callout_transfer") {
+            callout_transfer(msg.data);
+          } else if (msg.data.action === "closeconference") {
+            closeconference();
+          } else if (msg.data.action === "mic") {
+            mic(msg.data);
+          } else if (msg.data.action === "unmic") {
+            unmic(msg.data);
+          } else if (msg.data.action === "mute") {
+            mute(msg.data);
+          } else if (msg.data.action === "unmute") {
+            unmute(msg.data);
+          } else if (msg.data.action === "hangupconference") {
+            delete callList[msg.data.hangupconference_number];
+            hangupconference(msg.data);
+          } else if (msg.data.action === "joincomplete") {
+            joincomplete(msg.data);
+          } else if (msg.data.action === "calling") {
+            calling(msg.data);
+          } else if (msg.data.action === "online") {
+            online();
+          } else if (msg.data.action === "offline") {
+            offline();
+          } else if (msg.data.action === "getstatus") {
+            const d = {
+              action: "getstatus",
+              callList: callList,
+              status: operationStatus,
+              sender: "webagent",
+            };
+            broadcast(d);
+          }
+        });
+      }
+      function sendMessage() {
+        document.getElementById("chat-text").value +=
+          document.getElementById("messageChat").value + "\n";
+
+        data = {
+          action: "chat",
+          message: document.getElementById("messageChat").value,
+        };
+        broadcast(data);
+
+        document.getElementById("messageChat").value = "";
+      }
+
+      function broadcast(data) {
+        window.frames[0].postMessage(data, "*");
+      }
+
+      function incoming() {
+        const data = {
+          action: "incoming",
+          incoming_name: "สมศัก ศักสม",
+          incoming_number: "77777777777",
+          callout_number: "0977777777",
+          log_type: "normal",
+          src_type: "Mobile",
+          call_type: "Making",
+          sender: "webagent",
+        };
+        callList[data["incoming_number"]] = data;
+        broadcast(data);
+      }
+
+      function incoming2() {
+        const data = {
+          action: "incoming",
+          name: "ศรสวรรณ สวรรณศร",
+          incoming_number: "8888888888",
+          callout_number: "0988888888",
+          log_type: "normal",
+          src_type: "Mobile",
+          call_type: "Recive",
+          sender: "webagent",
+        };
+        callList[data["incoming_number"]] = data;
+        broadcast(data);
+      }
+
+      function answer1() {
+        console.log(callList);
+        if (Object.keys(callList)[0]) {
+          const d = callList[Object.keys(callList)[0]];
+          d["action"] = "answer";
+          d["answer_number"] =
+            d["incoming_number"] ||
+            d["callout_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"] ||
+            d[" calling_number"];
+          delete d["incoming_number"] ||
+            d["callout_transfer_number"] ||
+            d["transfer_number"] ||
+            d[" callout_trasfer"] ||
+            d[" calling_number"];
+          d["sender"] = "webagent";
+          d["status"] = "calling";
+          console.log(callListArray);
+          broadcast(d);
+        }
+      }
+
+      function answer2() {
+        if (Object.keys(callList)[1]) {
+          const d = callList[Object.keys(callList)[1]];
+          d["action"] = "answer";
+          d["answer_number"] =
+            d["incoming_number"] ||
+            d["callout_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"] ||
+            d[" calling_number"];
+          delete d["incoming_number"] ||
+            d["callout_transfer_number"] ||
+            d["transfer_number"] ||
+            d[" callout_trasfer"] ||
+            d[" calling_number"];
+          d["sender"] = "webagent";
+          d["status"] = "calling";
+          broadcast(d);
+        }
+      }
+
+      function answer3() {
+        console.log(callList);
+        if (Object.keys(callList)[0]) {
+          const d = callList[Object.keys(callList)[0]];
+          d["action"] = "answer1";
+          d["answer1_number"] =
+            d["incoming_number"] ||
+            d["callout_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"] ||
+            d[" calling_number"];
+          delete d["incoming_number"] ||
+            d["callout_transfer_number"] ||
+            d["transfer_number"] ||
+            d[" callout_trasfer"] ||
+            d[" calling_number"];
+          d["sender"] = "webagent";
+          d["status"] = "calling";
+          console.log(callListArray);
+          broadcast(d);
+        }
+      }
+
+      function answer4() {
+        if (Object.keys(callList)[1]) {
+          const d = callList[Object.keys(callList)[1]];
+          d["action"] = "answer1";
+          d["answer1_number"] =
+            d["incoming_number"] ||
+            d["callout_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"] ||
+            d[" calling_number"];
+          delete d["incoming_number"] ||
+            d["callout_transfer_number"] ||
+            d["transfer_number"] ||
+            d[" callout_trasfer"] ||
+            d[" calling_number"];
+          d["sender"] = "webagent";
+          d["status"] = "calling";
+          broadcast(d);
+        }
+      }
+
+      function hangup1() {
+        if (Object.keys(callList)[0]) {
+          const d = callList[Object.keys(callList)[0]];
+          d["action"] = "hangup";
+          d["hangup_number"] =
+            d["incoming_number"] ||
+            d["answer_number"] ||
+            d["callout_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"];
+          delete d["incoming_number"] ||
+            d["callout_number"] ||
+            d["answer_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"];
+          d["sender"] = "webagent";
+          d["status"] = "terminated";
+          broadcast(d);
+          delete callList[Object.keys(callList)[0]];
+        }
+      }
+
+      function hangup2() {
+        if (Object.keys(callList)[1]) {
+          const d = callList[Object.keys(callList)[1]];
+          d["action"] = "hangup";
+          d["hangup_number"] =
+            d["incoming_number"] ||
+            d["answer_number"] ||
+            d["callout_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"];
+          delete d["incoming_number"] ||
+            d["callout_number"] ||
+            d["answer_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"];
+          d["sender"] = "webagent";
+          d["status"] = "terminated";
+          broadcast(d);
+          delete callList[Object.keys(callList)[1]];
+        }
+      }
+
+      function hangupconference1() {
+        if (Object.keys(callList)[0]) {
+          const d = callList[Object.keys(callList)[0]];
+          d["action"] = "hangupconference";
+          d["hangupconference_number"] =
+            d["incoming_number"] ||
+            d["answer_number"] ||
+            d["callout_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"];
+          d["joincomplete_number"];
+          delete d["incoming_number"] ||
+            d["answer_number"] ||
+            d["callout_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"] ||
+            d["callout_transfer_number"];
+          d["joincomplete_number"];
+          d["sender"] = "webagent";
+          d["status"] = "terminated";
+          broadcast(d);
+          delete callList[Object.keys(callList)[0]];
+        }
+      }
+
+      function hangupconference(d) {
+        d["status"] = "terminated";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function transfercomplete() {
+        if (Object.keys(callList)[0]) {
+          const d = callList[Object.keys(callList)[0]];
+          d["action"] = "transfercomplete";
+          d["transfercomplete_number"] =
+            d["incoming_number"] ||
+            d["answer_number"] ||
+            d["callout_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"];
+          delete d["incoming_number"] ||
+            d["callout_number"] ||
+            d["answer_number"] ||
+            d["joincomplete_number"] ||
+            d["transfer_number"] ||
+            d[" callout_transfer_number"];
+          d["sender"] = "webagent";
+          d["status"] = "terminated";
+          broadcast(d);
+          delete callList[Object.keys(callList)[0]];
+        }
+      }
+
+      function answer(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function callout(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        callList[d["callout_number"]] = d;
+        broadcast(d);
+      }
+
+      function callout_transfer(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        callList[d["callout_transfer_number"]] = d;
+        broadcast(d);
+      }
+
+      function transfer(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function calling(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function hangup(d) {
+        d["status"] = "terminated";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function online() {
+        operationStatus = "online";
+        const d = { action: "online", sender: "webagent", status: "online" };
+        broadcast(d);
+      }
+
+      function offline() {
+        operationStatus = "offline";
+        const d = { action: "offline", sender: "webagent", status: "offline" };
+        broadcast(d);
+      }
+
+      function dndshort() {
+        operationStatus = "dndshort";
+        const d = {
+          action: "dndshort",
+          sender: "webagent",
+          status: "dndshort",
+        };
+        broadcast(d);
+      }
+
+      function dndlong() {
+        operationStatus = "dndlong";
+        const d = { action: "dndlong", sender: "webagent", status: "dndlong" };
+        broadcast(d);
+      }
+
+      function dndlast() {
+        operationStatus = "dndlast";
+        const d = { action: "dndlast", sender: "webagent", status: "dndlast" };
+        broadcast(d);
+      }
+
+      /*      function createconference() {
+        var randomNumber = Math.floor(Math.random() * 2) + 1;
+        console.log(randomNumber);
+        if (randomNumber === 1) {
+          createcomplete();
+        } else {
+          createfalse();
+        }
+      }
+ */
+      function createRandomRoomNumber() {
+        const randomNumber = Math.floor(Math.random() * 1000000);
+        const roomNumber = "0000" + randomNumber;
+        return roomNumber.slice(-6);
+      }
+
+      function createcomplete() {
+        operationStatus = "createcomplete";
+        const room_number = createRandomRoomNumber();
+        const d = {
+          action: "createcomplete",
+          sender: "webagent",
+          status: "createcomplete",
+          action_by: "Agent 1",
+          room_number: room_number,
+        };
+
+        broadcast(d);
+      }
+
+      function createfalse() {
+        operationStatus = "createfalse";
+        const d = {
+          action: "createfalse",
+          sender: "webagent",
+          status: "createfalse",
+          action_by: "Agent 1",
+        };
+        broadcast(d);
+      }
+
+      function joincomplete(d) {
+        d["status"] = "calling";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function closeconference() {
+        const d = {
+          action: "closeconference",
+          sender: "webagent",
+        };
+        broadcast(d);
+      }
+
+      function mic(d) {
+        d["status"] = "mic";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function unmic(d) {
+        d["status"] = "unmic";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function mute(d) {
+        d["status"] = "unmic";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+
+      function unmute(d) {
+        d["status"] = "unmic";
+        d["sender"] = "webagent";
+        broadcast(d);
+      }
+    </script>
+  </body>
+</html>

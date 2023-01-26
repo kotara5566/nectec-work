@@ -1,0 +1,88 @@
+<div
+  id="kt_toolbar_container"
+  [ngClass]="toolbarContainerCssClasses"
+  class="d-flex flex-stack"
+>
+  <app-page-title
+    #ktPageTitle
+    class="page-title d-flex"
+    [ngClass]="pageTitleCssClasses"
+  ></app-page-title>
+  <!-- begin::Actions  -->
+  <div class="d-flex align-items-center py-1">
+    <!-- begin::Button  -->
+    <div class="d-flex align-items-center">
+      <div class="connect">
+        <div class="d-flex flex-row flex-column-fluid">
+          <div class="d-flex flex-row-auto">
+            <li class="d-flex flex-center">
+              <span class="bullet create-status-ans"></span>
+            </li>
+          </div>
+          <div class="d-flex flex-row-fluid flex-center" style="color: white">
+            เชื่อมต่อเเล้ว
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- select -->
+
+    <div class="d-flex align-items-center">
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#kt_modal_1"
+        style="
+          background-color: #f2f2f2;
+          width: 100px;
+          border-radius: 4px;
+          border: none;
+          color: #000;
+        "
+        [ngClass]="bulletColor"
+      >
+        {{ data }}
+      </button>
+    </div>
+
+    <!-- conferrecnce -->
+
+    <div class="d-flex align-items-center" [ngClass]="toolbarButtonMarginClass">
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#Modal"
+        class="bg-black btn btn-icon position-relative"
+        [ngClass]="toolbarButtonHeightClass"
+      >
+        <span
+          [inlineSVG]="'./assets/img/iconnumber/group.svg'"
+          class="svg-icon text-white"
+          [ngClass]="toolbarButtonIconSizeClass"
+        ></span>
+      </button>
+
+      <!-- buttoncall -->
+      <div
+        class="d-flex align-items-center"
+        [ngClass]="toolbarButtonMarginClass"
+      >
+        <button
+          class="bg-black btn btn-icon position-relative"
+          [ngClass]="toolbarButtonHeightClass"
+          data-bs-toggle="modal"
+          data-bs-target="#callout-popup"
+        >
+          <span
+            [inlineSVG]="'./assets/img/iconnumber/answer.svg'"
+            class="svg-icon text-white"
+            [ngClass]="toolbarButtonIconSizeClass"
+          ></span>
+        </button>
+        <app-search-result-inner></app-search-result-inner>
+      </div>
+      <!-- end::Button  -->
+    </div>
+
+    <!-- end::Actions  -->
+  </div>
+</div>
