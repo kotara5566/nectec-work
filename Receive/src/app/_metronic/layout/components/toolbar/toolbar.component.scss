@@ -6,6 +6,86 @@
   margin-left: 10px;
 }
 
+.bullet1 {
+  background-color: #06D734;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: -30px;
+}
+
+.bullet2 {
+  background-color: gray;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: -30px;
+}
+
+.bullet3 {
+  background-color: orange;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: -8px;
+}
+
+.bullet4 {
+  background-color: orange;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: -10px;
+}
+
+.bullet5 {
+  background-color: orange;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-left: -14px;
+
+}
+
+.btn1 {
+  width: 110px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn2 {
+  width: 110px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+
+.btn3 {
+  width: 110px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+
+.btn4 {
+  width: 110px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+
+.btn5 {
+  width: 110px;
+  height: 22px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+
 .connect {
   background-color: #000;
   border-radius: 6px;
@@ -18,26 +98,319 @@
   margin-left: -90px;
 }
 
-.modal-name-bullet:before {
-  content: '•';
-  font-size: 40px;
-  margin-right: 8px;
+.modal-name-bullet {
+  display: inline-block;
+  background-color: #06D734;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+
 }
-.online-bullet:before {
-  color: green;
+
+.online-bullet {
+  background-color: #06D734;
 }
-.offline-bullet:before {
-  color: gray;
+
+.offline-bullet {
+  background-color: gray;
 }
-.dndshort-bullet:before {
-  color: orange;
+
+.dndshort-bullet {
+  background-color: orange;
 }
-.dndlong-bullet:before {
-  color: orange;
+
+.dndlong-bullet {
+  background-color: orange;
 }
-.dndlast-bullet:before {
-  color: orange;
+
+.dndlast-bullet {
+  background-color: orange;
 }
-.show {
-  display: block;
+
+.btn-select:hover {
+  background-color: #C0C0C0;
+
+}
+
+.modal-status {
+  width: 130px;
+  top: 0;
+  right: 0;
+  margin: 0;
+  margin-top: 120px;
+  background-color: #D9D9D9;
+  border-radius: 6px;
+  height: 150px;
+  margin-left: 740px;
+
+}
+
+.btn-select-status{
+  background-color: #d9d9d9;
+  width: 120px;
+  border-radius: 4px;
+  border: none;
+  color: #000;
+  height: 20px;
+}
+
+.modal-popup {
+  width: 380px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  margin-bottom: 50px;
+  margin-right: 30px;
+  background-color: #1e1e2d;
+  border-radius: 12px;
+  height: 110px;
+}
+
+.modal-content {
+  border-radius: 12px;
+}
+
+.btn-ans {
+  max-height: 60px;
+  max-width: 60px;
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+.btn-hangup {
+  max-height: 60px;
+  max-width: 60px;
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 25px;
+  margin-right: 25px;
+
+}
+
+.incoming-icon {
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+.incoming-name {
+  margin-top: -2px;
+  margin-left: 15px;
+}
+
+.incoming-number {
+  margin-top: -2px;
+}
+
+.incoming-transfer {
+  background-color: #1B1B28;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.incoming-transfer:hover {
+  background: black;
+  border-radius: 6px;
+}
+
+.ans-icon {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.ans-timer {
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+.ans-icon-mic {
+  margin-left: 90px;
+  background-color: #1e1e2d;
+  border: none;
+}
+
+.ans-icon-speaker {
+  margin-left: 10px;
+  background-color: #1e1e2d;
+   border: none;
+}
+
+.ans-icon-numpad {
+  margin-left: 10px;
+  background-color: #1e1e2d;
+}
+
+.hangup-icon {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.close-icon {
+  margin-top: 0px;
+}
+
+.numpad-popup {
+  width: 380px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  margin-bottom: 50px;
+  margin-right: 30px;
+  background-color: #1e1e2d;
+  border-radius: 12px;
+  height: 512px;
+}
+
+.modal-content-popup {
+  border-radius: 12px;
+}
+
+.numpad {
+  margin-left: -10px;
+  margin-top: -30px;
+}
+
+.numpad-l {
+  margin-top: 60px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.bg-dark {
+  background-color: #1E1E2D;
+}
+
+.modal-xl {
+  max-width: 630px;
+}
+
+.create-room {
+  background-color: #000;
+  border-radius: 12px;
+  height: 180px;
+  width: 180px;
+}
+
+.create-status-call {
+  background-color: #FFAE50;
+  border-radius: 12px;
+  height: 10px;
+  width: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.modal-header {
+  border: none;
+/*   min-height: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-left: 25px;
+  width: 580px; */
+}
+
+.create-join {
+  background-color: #000;
+  border-radius: 6px;
+  height: 50px;
+  width: 250px;
+  margin-top: 10px;
+}
+
+.create-list {
+  background-color: #000;
+  border-radius: 6px;
+  height: 50px;
+  width: 350px;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.user {
+  text-align: center;
+}
+
+.btn-add {
+  background-color: #06D734;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+}
+
+.btn-h {
+  margin-left: 10px;
+  background-color: #FF1616;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+}
+
+.btn-h1 {
+  background-color: #FF1616;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+}
+
+.line-on-bottom {
+  border-bottom: 1px solid rgb(143, 143, 143);
+  margin-left: 25px;
+  width: 580px;
+}
+
+.required-join {
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.btn-icon-mic {
+  margin-left: 25px;
+  background-color: #1e1e2d;
+}
+
+.btn-icon-speaker {
+  margin-left: 20px;
+  background-color: #1e1e2d;
+}
+
+.btn-icon-mic1 {
+  margin-left: 70px;
+  background-color: #000000;
+}
+
+.btn-icon-speaker1 {
+  margin-left: 10px;
+  background-color: #000000;
+}
+
+
+.btn-hangup-con {
+  max-height: 60px;
+  max-width: 60px;
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 12px;
+
+}
+
+.bg {
+  background-color: #A1A1A1;
+}
+
+.no-data-text {
+  margin-left: 250px;
+}
+
+.modal {
+  box-shadow: 0px 0px 0px transparent;
+  outline: 0;
 }

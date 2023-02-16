@@ -1,4 +1,4 @@
-import { NumpadModule } from './../../components/numpad/numpad.module';
+import { ToolbarModule } from './components/toolbar/toolbar.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg-2';
@@ -31,8 +31,6 @@ import {
 } from '../partials';
 import { EngagesComponent } from '../partials/layout/engages/engages.component';
 import { ThemeModeModule } from '../partials/layout/theme-mode-switcher/theme-mode.module';
-import { IncomingModule } from "../../components/incoming/incoming.module";
-import { TestModule } from 'src/app/components/test/test.module';
 
 const routes: Routes = [
   {
@@ -50,7 +48,6 @@ const routes: Routes = [
         ContentComponent,
         FooterComponent,
         ScriptsInitComponent,
-        ToolbarComponent,
         AsideMenuComponent,
         TopbarComponent,
         PageTitleComponent,
@@ -73,9 +70,7 @@ const routes: Routes = [
         NgbTooltipModule,
         TranslateModule,
         ThemeModeModule,
-        IncomingModule,
-        NumpadModule,
-        TestModule
+        ToolbarModule,
     ],
 
 })
